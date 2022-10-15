@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_12_120016) do
+ActiveRecord::Schema.define(version: 2022_10_12_133504) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.string "name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "amount", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +46,45 @@ ActiveRecord::Schema.define(version: 2022_10_12_120016) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_id", null: false
+    t.integer "item_id", null: false
+    t.integer "price", null: false
+    t.integer "amount", null: false
+    t.integer "status"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
+    t.integer "shipping_cost", null: false
+    t.integer "total_payment", null: false
+    t.integer "payment_method"
+    t.integer "status"
   end
 
 end
