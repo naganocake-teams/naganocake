@@ -1,0 +1,29 @@
+
+
+<h1>topページ</h1>
+
+<div class="box">
+  <p>
+    ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方でも商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+  </p>
+</div>
+
+<div class="box">
+  <h5>新着商品</h5>
+
+  <% @items.each do |items| %>
+    <div class="card">
+
+      <%= link_to item_path(items.id) do%>
+        <%= image_tag items.image, size: "80x80" %>
+      <% end %>
+
+      <div class="card__textbox">
+        <%= items.name %>
+        <%= items.price %>
+      </div>
+    </div>
+  <% end %>

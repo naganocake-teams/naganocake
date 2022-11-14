@@ -11,6 +11,106 @@
   </head>
 
   <body>
+
+    <header>
+      <div class="img">
+        <h2>ロゴ</h2>
+      </div>
+
+      <nav>
+
+        <ul>
+
+          <% if customer_signed_in? %>
+
+            <li>
+              <%= link_to mypage_path do %>
+                <bottun>マイページ</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to items_path do %>
+                <bottun>商品一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to cart_items_path do %>
+                <bottun>カート</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+                <bottun>ログアウト</bottun>
+              <% end %>
+            </li>
+
+          <% elsif admin_signed_in? %>
+
+            <li>
+              <%= link_to admin_customers_path do %>
+                <bottun>会員一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to items_path do %>
+                <bottun>商品一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to admin_orders_path do %>
+                <bottun>注文商品一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to admin_genres_path do %>
+                <bottun>ジャンル一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+                <bottun>ログアウト</bottun>
+              <% end %>
+            </li>
+
+          <% else %>
+
+            <li>
+              <%= link_to about_path do %>
+                <bottun>About</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to items_path do %>
+                <bottun>商品一覧</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to new_customer_registration_path do %>
+                <bottun>新規登録</bottun>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to new_customer_session_path do %>
+                <bottun>ログイン</bottun>
+              <% end %>
+            </li>
+
+          <% end %>
+        </ul>
+
+      </nav>
+
+    </header>
     <%= yield %>
   </body>
 </html>
