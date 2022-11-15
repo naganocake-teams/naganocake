@@ -66,6 +66,20 @@
   <%= f.hidden_field :payment_method %>
   <%= f.hidden_field :customer_id, :value => current_customer.id %>
 
+
+<%
+=begin
+%>
+  <% @cart_items.each do |cart_items| %>
+    <%= f.hidden_field :item_id, :value => cart_items.item.id %>
+    <%= f.hidden_field :amount, :value => cart_items.amount %>
+    <%= f.hidden_field :price, :value => cart_items.item.with_tax_price %>
+  <% end %>
+
+<%
+=end
+%>
+
   <%= f.submit "注文を確定する" %>
 <% end %>
 

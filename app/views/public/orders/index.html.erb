@@ -1,2 +1,35 @@
-<h1>朱蒙履歴一覧</h1>
+<h1>注文履歴一覧</h1>
+
+<table>
+  
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <% @orders.each do |orders| %>
+        
+        <td><%= orders.created_at %></td>
+        <td>
+          〒<%= orders.postal_code %><br>
+          <%= orders.addres %><br>
+          <%= orders.name %>
+        </td>
+        <td><%= orders. %></td>
+        <td><%= orders. %></td>
+        <td><%= orders. %></td>
+        <td><%= orders. %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  
+</table>
 

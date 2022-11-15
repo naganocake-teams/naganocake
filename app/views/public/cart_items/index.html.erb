@@ -57,12 +57,6 @@
   </tr>
 </tbale>
 
-<%= form_with model: @order, url: order_confirm_path do |f| %>
-
-  <%= f.hidden_field :total_payment, :value => @sum %>
-
-  <%= link_to new_order_path do %>
-    <%= f.submit "情報入力画面に進む" %>
-  <% end %>
-
+<%= link_to new_order_path do %>
+  <button>情報入力画面に進む</button>
 <% end %>

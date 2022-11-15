@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
 
-
-
     resources :items, only: [:index, :show]
     resources :cart_items, only:[:create, :index, :destroy, :update]do
       collection do
@@ -28,12 +26,14 @@ Rails.application.routes.draw do
     patch '/customers/infomation' => "customers#update", as: 'update_infomation'
     get '/customers/unsubscribe' => "customers#unsubscribe", as: 'unsubscribe'
     patch '/customers/withdraw' => "customers#withdraw", as: 'withdraw'
-    
-    resources :orders
-    
-    post '/orders/confirm' => "orders#confirm", as: "order_confirm"
+
     get  '/orders/complete' => "orders#complete", as: "order_complete"
-    
+
+    resources :orders, only:[:create, :new, :index, :show]
+
+    post '/orders/confirm' => "orders#confirm", as: "order_confirm"
+
+
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
