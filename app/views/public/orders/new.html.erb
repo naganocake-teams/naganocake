@@ -44,6 +44,7 @@
   </div>
 
   <%= f.hidden_field :customer_id => current_customer.id %>
+  <%= f.hidden_field :total_payment, :value => @sum %>
 
   <%= f.submit "確認情報画面へ進む" %>
 

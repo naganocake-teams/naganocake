@@ -57,7 +57,7 @@
   </tr>
 </tbale>
 
-<%= form_with model: @order, url: orders_path do |f| %>
+<%= form_with model: @order, url: order_confirm_path do |f| %>
 
   <%= f.hidden_field :total_payment, :value => @sum %>
 

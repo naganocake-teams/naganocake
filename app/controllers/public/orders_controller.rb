@@ -6,11 +6,15 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.order.all
   end
-
-  def show
+  
+  def complete
   end
 
+
   def confirm
+    @cart_items = current_customer.cart_items
+    @sum = 0
+
 
     if params[:order][:select_address] == "0"
       @order = Order.new(order_params)
@@ -28,23 +32,21 @@ class Public::OrdersController < ApplicationController
     else
       @order = Order.new(order_params)
     end
-    binding.pry
-    #@order.save
-    #redirect_to orders_path
+    @order.shipping_cost = 800
   end
 
   def create
     @order = Order.new(order_params)
-    @order.total_payment = params[:order][:total_payment]
-    @order.shipping_cost = 800
     @order.save
-    redirect_to orders_path
+    redirect_to order_complete_path
   end
+
+  
 
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :customer_id)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_payment, :customer_id, :shipping_cost, :customer_id)
   end
 
 end
