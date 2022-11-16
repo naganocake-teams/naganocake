@@ -7,7 +7,7 @@
 
     <%= @item.introduction %>
 
-    \<%= @item.price %>（税込価格）
+    \<%= @item.with_tax_price %>（税込価格）
 </div>
 <% if customer_signed_in? %>
   <%= form_with model: @cart_item, url: cart_items_path do |f| %>

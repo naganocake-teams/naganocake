@@ -5,7 +5,11 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-    @cart_items = current_customer.cart_items
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def complete
@@ -37,19 +41,19 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order_detail = OrderDetail.new
-    
+    @order.save
 
     current_customer.cart_items.each do |cart_items|
+      @order_detail = OrderDetail.new
       @order_detail.item_id = cart_items.item_id
+      @order_detail.order_id = @order.id
       @order_detail.price = cart_items.item.with_tax_price
       @order_detail.amount = cart_items.amount
+      @order_detail.save
     end
-    binding.pry
-    @order.save
-    @order_detail.save
 
-    current_customer.cart_items.destroy
+    current_customer.cart_items.destroy_all
+
     redirect_to order_complete_path
   end
 

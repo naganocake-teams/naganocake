@@ -1,7 +1,7 @@
 <h1>注文履歴一覧</h1>
 
 <table>
-  
+
   <thead>
     <tr>
       <th>注文日</th>
@@ -12,24 +12,41 @@
       <th>注文詳細</th>
     </tr>
   </thead>
-  
+
   <tbody>
-    <tr>
-      <% @orders.each do |orders| %>
-        
-        <td><%= orders.created_at %></td>
+
+    <% @orders.each do |order| %>
+      <tr>
+
+
+        <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
         <td>
-          〒<%= orders.postal_code %><br>
-          <%= orders.addres %><br>
-          <%= orders.name %>
+          〒<%= order.postal_code %><br>
+          <%= order.address %><br>
+          <%= order.name %>
         </td>
-        <td><%= orders. %></td>
-        <td><%= orders. %></td>
-        <td><%= orders. %></td>
-        <td><%= orders. %></td>
-      <% end %>
+
+        <td>
+          <% order.order_details.each do |order_detail| %>
+            <%= order_detail.item.name %><br>
+          <% end %>
+        </td>
+
+        <td><%= order.total_payment %></td>
+        <td><%= order.status_i18n %></td>
+        <td>
+          <%= link_to order_path(order.id) do %>
+            <button>表示する</button>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+
+    <tr>
+
     </tr>
   </tbody>
-  
+
 </table>
 
