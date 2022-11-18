@@ -1,2 +1,55 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2><%= @order.customer.name_display %>さんの注文履歴</h2>
+
+<table>
+  <tr>
+    <th>購入者</th>
+    <td><%= @order.customer.name_display %></td>
+  </tr>
+
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    </td></td>
+  </tr>
+
+  <tr>
+    <th>支払方法</th>
+    <td><%= @order.payment_method_i18n %></td>
+  </tr>
+
+  <tr>
+    <th>注文ステータス</th>
+    <td>
+      <%= form_with model: @order, url: edit_admin_order_path(@order.id), method: :patch do |f| %>
+
+        <%= f.select :status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"]  %>
+
+        <%= f.submit "更新" %>
+      <% end %>
+    </td>
+  </tr>
+
+</table>
+
+<table>
+
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>注文個数</th>
+      <th>注文ステータス</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+
+    </tr>
+  </tbody>
+
+</table>
+
