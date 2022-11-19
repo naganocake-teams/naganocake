@@ -6,9 +6,7 @@ completion_of_production: 3}
   belongs_to :order
   belongs_to :item
 
-  def total_amount
-    amount.each do
-      amount += amount
-    end
+  def subtotal
+    item.with_tax_price * amount
   end
 end

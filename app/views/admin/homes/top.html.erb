@@ -24,10 +24,9 @@
         <td><%= order.customer.name_display %></td>
 
         <td>
-          <% order.order_details do |order_detail| %>
-            <%= order_detail.amount %>
-          <% end %>
+          <%= order.order_details.sum(:amount) %>
         </td>
+
         <td><%= order.status_i18n %></td>
 
       </tr>
