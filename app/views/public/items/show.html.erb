@@ -1,0 +1,24 @@
+<h1>商品詳細</h1>
+<div class="box">
+
+    <%= image_tag @item.image, size: "200x200" %>
+
+    <%= @item.name %>
+
+    <%= @item.introduction %>
+
+    \<%= @item.with_tax_price.to_s(:delimited) %>（税込）
+</div>
+<% if customer_signed_in? %>
+  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+
+    <%= f.hidden_field :item_id, :value => @item.id %>
+
+    <%= f.select :amount, *[1..5], { prompt: '個数選択'}, required: true %>
+
+    <%= f.submit "カートに入れる" %>
+
+  <% end %>
+<% end %>
+
+

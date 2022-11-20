@@ -1,0 +1,16 @@
+<h1>商品一覧</h1>
+<div class="box">
+
+  <% @items.each do |items| %>
+    <div class="card">
+
+      <%= link_to item_path(items.id) do%>
+        <%= image_tag items.image, size: "80x80" %>
+      <% end %>
+
+      <div class="card__textbox">
+        <%= items.name %>
+        \<%= items.with_tax_price.to_s(:delimited)  %>
+      </div>
+    </div>
+  <% end %>
