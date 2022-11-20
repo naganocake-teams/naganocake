@@ -1,3 +1,4 @@
+
 <h2>新規登録</h2>
 
 <%= form_with model: @customer,url: customer_registration_path do |f| %>
@@ -45,18 +46,23 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> 文字以上)</em>
     <% end %>
+
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
+
     <%= f.label  "パスワード(確認用)" %>
+
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
+
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
 <h4>既に登録済みの方</h4>
 <p><a href="/customers/sign_in">こちら</a>からログインしてください。</p>
+
