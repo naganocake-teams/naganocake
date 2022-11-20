@@ -6,9 +6,7 @@ class Order < ApplicationRecord
   enum status: {waiting_for_payment: 0, payment_confirmation: 1, in_production: 2,
 preparing_to_ship: 3, sent: 4}
 
-def status_select
-  status_i18n
-end
-
-
+  def address_display
+    "〒" + postal_code + '' + address + '' + name
+  end
 end

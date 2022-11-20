@@ -32,7 +32,7 @@
           <% end %>
         </td>
 
-        <td><%= order.total_payment %></td>
+        <td><%= order.total_payment.to_s(:delimited) %>円</td>
         <td><%= order.status_i18n %></td>
         <td>
           <%= link_to order_path(order.id) do %>

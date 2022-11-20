@@ -40,20 +40,6 @@
       <td><%= @customer.email %></td>
     </tr>
 
-    <tr>
-       <td>メールアドレス</td>
-       <% if @customer.is_deleted == false %>
-         <td>
-           有効
-         </td>
-       <% else%>
-          <td>
-           退会
-         </td>
-       <% end %>
-
-    </tr>
-
   </table>
 </div>
 

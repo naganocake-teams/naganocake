@@ -16,12 +16,13 @@
       <div class="img">
         <h2>ロゴ</h2>
       </div>
+      <% if customer_signed_in? %>
+
+      <p><%= current_customer.name_display %>さん　ようこそ！</p>
 
       <nav>
 
         <ul>
-
-          <% if customer_signed_in? %>
 
             <li>
               <%= link_to mypage_path do %>

@@ -28,10 +28,11 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => "customers#withdraw", as: 'withdraw'
 
     get  '/orders/complete' => "orders#complete", as: "order_complete"
+    post '/orders/confirm' => "orders#confirm", as: "order_confirm"
 
     resources :orders, only:[:create, :new, :index, :show]
 
-    post '/orders/confirm' => "orders#confirm", as: "order_confirm"
+
 
 
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
@@ -43,8 +44,12 @@ Rails.application.routes.draw do
     get '/' => "homes#top", as:"top"
     resources :items, only:[:index, :new, :create, :show, :edit, :update,]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :order_details
-    resources :orders
+
+    resources :orders, only:[:show, :update] do
+      resources :order_details, only:[:update]
+    end
+
+    patch '/admin/orders/:order_id/order_details/:id' => "order_detail#update", as: "update_order_detail"
     resources :customers
 
     get '/admin' => "homes#top"
