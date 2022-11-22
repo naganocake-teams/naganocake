@@ -1,27 +1,37 @@
-<div class="box">
-  <p>
-    ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方でも商品の閲覧はできますが、<br>
-    購入には会員登録が必要になります。
-  </p>
-</div>
 
-<div class="box">
-  <h3>新着商品</h3>
+  <div class="container">
 
-  <% @items.each do |items| %>
-    <div class="card">
+    <div class="row mx-auto my-4 d-flex justify-contet-center">
+      <div class="col-8 mx-auto rounded p-5 border">
 
-      <%= link_to item_path(items.id) do%>
-        <%= image_tag items.image, size: "80x80" %>
-      <% end %>
-
-      <div class="card__textbox">
-        <%= items.name %>
-        \<%= items.with_tax_price.to_s(:delimited) %>
+        <p class="py-3 m-auto border"><strong>
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方でも商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。</strong>
+        </p>
       </div>
     </div>
-  <% end %>
 
-  <%= link_to "全ての商品を見る>", items_path %>
+    <h3 class="mb-3"><strong>新着商品</strong></h3>
+
+    <div class="row">
+      <% @items.each do |items| %>
+        <div class="card col-md-3 border-0" style=":nth-child(3n)display: none">
+          <%= link_to item_path(items.id) do%>
+            <%= image_tag items.image, size: "247x100" %>
+          <% end %>
+          <div class="card-title">
+            <%= items.name %>
+          </div>
+          <div class="card-subtitle">
+            ¥<%= items.with_tax_price.to_s(:delimited) %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <div class="col text-right">
+      <%= link_to "全ての商品を見る>", items_path, class: "text-end"%>
+    </div>
+  </div>
