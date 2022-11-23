@@ -22,22 +22,16 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-
     get '/about' => "homes#about", as: "about"
     get '/customers/mypage' => "customers#show", as: 'mypage'
     get '/customers/infomation/edit' => "customers#edit", as: 'edit_infomation'
     patch '/customers/infomation' => "customers#update", as: 'update_infomation'
     get '/customers/unsubscribe' => "customers#unsubscribe", as: 'unsubscribe'
     patch '/customers/withdraw' => "customers#withdraw", as: 'withdraw'
-
     get  '/orders/complete' => "orders#complete", as: "order_complete"
     post '/orders/confirm' => "orders#confirm", as: "order_confirm"
-
+    
     resources :orders, only:[:create, :new, :index, :show]
-
-
-
-
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
