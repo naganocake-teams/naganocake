@@ -52,10 +52,6 @@ Rails.application.routes.draw do
     get '/admin' => "homes#top"
   end
 
-
-
-
-
   # For details on the DSgit L available within this file, see https://guides.rubyonrails.org/routing.html
 
 end

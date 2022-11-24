@@ -1,49 +1,52 @@
-<h1>商品一覧</h1>
-<table>
+<div class="container">
+  <h4 class="col-3 offset-1 my-4"><span class="px-3" style="background-color: #dcdcdc">商品一覧</span></h4>
 
-  <thead>
+  <div class="row offset-1">
+    <table class="table  col-10">
 
-    <tr>
+      <thead>
 
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンルジャンル</th>
-      <th>ステータス</th>
+        <tr class="table-light">
 
-    </tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
 
-  </thead>
+        </tr>
 
-  <tbody>
+      </thead>
 
-    <% @items.each do |items| %>
-      <tr>
-        <td><%= items.id %></td>
+    <tbody>
 
-        <td>
-          <%= link_to admin_item_path(items.id) do %>
-            <%= items.name %>
+      <% @items.each do |items| %>
+        <tr>
+          <td><%= items.id %></td>
+
+          <td class="">
+            <%= link_to admin_item_path(items.id), class: "border-bottom" do %>
+              <%= items.name %>
+            <% end %>
+          </td>
+
+          <td><%= items.price.to_s(:delimited)%></td>
+          <td><%= items.genre.name %></td>
+
+          <% if items.is_active == true %>
+            <td class="text-success">
+              <strong>販売中
+            </td>
+          <% else %>
+            <td class="text-secondary">
+              <strong>販売停止中</strong>
+            </td>
           <% end %>
-        </td>
 
-        <td><%= items.price%></td>
-        <td><%= items.genre.name %></td>
+        </tr>
+      <% end %>
 
-        <% if items.is_active == true %>
-          <td>
-             販売中
-          </td>
-        <% else %>
-          <td>
-             販売停止中
-          </td>
-        <% end %>
-
-      </tr>
-    <% end %>
-
-  </tbody>
-
-</table>
+    </table>
+  </div>
+</div>
 
