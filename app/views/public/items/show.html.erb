@@ -4,9 +4,7 @@
       <%= image_tag @item.image, size: "250x200" %>
     </div>
     <div class="col-7 ml-3 ">
-        <h4 class="mb-3
-        
-        "><strong><%= @item.name %></strong></h4>
+        <h4 class="mb-3"><strong><%= @item.name %></strong></h4>
         <p class="mb-5"><%= @item.introduction %></p>
         <div class="d-flex ">
           <h5 class="mt-5">¥<%= @item.with_tax_price.to_s(:delimited) %><span class="small">(税込)</span></h5>
@@ -28,5 +26,10 @@
       <% end %>
   <% end %>
 </div>
+
+
+
+
+
 
 
