@@ -15,7 +15,7 @@
       </div>
       <div class="row mb-2" style="height: 200px;">
         <%= f.label "商品説明", class: "form-label col-3" %>
-        <%= f.text_area :introduction, class: "col-7 form-control ml-3"   %>
+        <%= f.text_area :introduction, class: "col-7 form-control ml-3"  %>
       </div>
       <div class="row mb-2">
         <%= f.label  "ジャンル", class: "form-label col-3 mr-3" %>
@@ -27,7 +27,7 @@
       </div>
       <div class="row mb-4 align-items-center">
         <%= f.label "販売ステータス", class: "form-label col-5" %>
-        <%= f.radio_button :is_active, true, checked: true, class: "" %>販売中
+        <%= f.radio_button :is_active, true, checked: true %>販売中
         <%= f.radio_button :is_active, false, class:"ml-3" %>販売停止中
       </div>
       <div class="row mb-2 d-flex justify-content-center">
