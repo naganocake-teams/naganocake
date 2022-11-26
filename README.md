@@ -8,6 +8,7 @@
 
 
 ##本サイトに用いたフレームワーク&gem
+
 *Rails 6.1.7
 *bootstrap
 *kamnari
