@@ -1,16 +1,16 @@
-<h1>商品一覧</h1>
-<div class="box">
-
-  <% @items.each do |items| %>
-    <div class="card">
-
-      <%= link_to item_path(items.id) do%>
-        <%= image_tag items.image, size: "80x80" %>
-      <% end %>
-
-      <div class="card__textbox">
-        <%= items.name %>
-        \<%= items.with_tax_price.to_s(:delimited)  %>
+<div class="container">
+  <h3 class="mt-5">商品一覧(全<%= @items.count %>件)</h3>
+    <div class="row">
+    <% @items.each do |items| %>
+      <div class="box col-3 border-0 px-0 mb-3">
+        <%= link_to item_path(items.id) do%>
+          <%= image_tag items.image, size: "285x100", class: "mb-3" %>
+        <% end %>
+        <div class="text">
+            <p><%= items.name %></p>
+            <p>¥<%= items.with_tax_price.to_s(:delimited) %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>

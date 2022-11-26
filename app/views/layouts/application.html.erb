@@ -2,116 +2,107 @@
 <html>
   <head>
     <title>Naganocake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-    <header>
-      <div class="img">
-        <h2>ロゴ</h2>
-      </div>
-      <% if customer_signed_in? %>
-
-      <p><%= current_customer.name_display %>さん　ようこそ！</p>
-
-      <nav>
-
-        <ul>
-
-            <li>
-              <%= link_to mypage_path do %>
-                <bottun>マイページ</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to items_path do %>
-                <bottun>商品一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to cart_items_path do %>
-                <bottun>カート</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to destroy_customer_session_path, method: :delete do %>
-                <bottun>ログアウト</bottun>
-              <% end %>
-            </li>
-
-          <% elsif admin_signed_in? %>
-
-            <li>
-              <%= link_to admin_customers_path do %>
-                <bottun>会員一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to items_path do %>
-                <bottun>商品一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to admin_orders_path do %>
-                <bottun>注文商品一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to admin_genres_path do %>
-                <bottun>ジャンル一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to destroy_admin_session_path, method: :delete do %>
-                <bottun>ログアウト</bottun>
-              <% end %>
-            </li>
-
-          <% else %>
-
-            <li>
-              <%= link_to about_path do %>
-                <bottun>About</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to items_path do %>
-                <bottun>商品一覧</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to new_customer_registration_path do %>
-                <bottun>新規登録</bottun>
-              <% end %>
-            </li>
-
-            <li>
-              <%= link_to new_customer_session_path do %>
-                <bottun>ログイン</bottun>
-              <% end %>
-            </li>
-
+  <header>
+    <nav class="navbar navbar-expand border-bottom d-flex justify-content-between ">
+      <div class="container">
+        <h2 class="col-2 text-center  border navbar-brand">LOGO</h2>
+          <% if customer_signed_in? %>
+            <span class="">ようこそ、<%= current_customer.name_display %>さん！</span>
           <% end %>
-        </ul>
 
-      </nav>
+          <ul class="navbar-nav">
+          <% if customer_signed_in? %>
+          <li class="nav-item mr-3">
+              <%= link_to mypage_path, class: 'btn btn-outline-dark nav-link px-1' do %>
+                マイページ
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+              <%= link_to items_path, class: 'btn btn-outline-dark nav-link' do %>
+                商品一覧
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+              <%= link_to cart_items_path, class: 'btn btn-outline-dark nav-link px-3' do %>
+               カート
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to destroy_customer_session_path, class: 'btn btn-outline-dark nav-link px-1', method: :delete do %>
+              ログアウト
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item mr-3">
+            <%= link_to admin_customers_path, class: 'btn btn-outline-dark nav-link ' do %>
+              会員一覧
+            <% end %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to items_path, class: 'btn btn-outline-dark nav-link ' do %>
+              商品一覧
+            <% end %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to admin_orders_path, class: 'btn btn-outline-dark nav-link ' do %>
+              注文商品一覧
+            <% end %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to admin_genres_path, class: 'btn btn-outline-dark nav-link ' do %>
+              ジャンル一覧
+            <% end %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to destroy_admin_session_path, class: 'btn btn-outline-dark nav-link ', method: :delete do %>
+              ログアウト
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item mr-3">
+              <%= link_to about_path, class: 'btn btn-outline-dark nav-link ' do %>
+                About
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+              <%= link_to items_path, class: 'btn btn-outline-dark nav-link ' do %>
+                商品一覧
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+              <%= link_to new_customer_registration_path, class: 'btn btn-outline-dark nav-link ' do %>
+                新規登録
+              <% end %>
+          </li>
+          <li class="nav-item mr-3">
+              <%= link_to new_customer_session_path, class: 'btn btn-outline-dark nav-link ' do %>
+                ログイン
+              <% end %>
+          </li>
+          </ul>
+        <% end %>
 
-    </header>
+      </div>
+    </nav>
+  </header>
+
+  <main>
     <%= yield %>
+  </main>
+
+  <footer class="border-top fixed-bottom">
+  </footer>
+
   </body>
 </html>

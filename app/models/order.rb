@@ -7,6 +7,6 @@ class Order < ApplicationRecord
 preparing_to_ship: 3, sent: 4}
 
   def address_display
-    "〒" + postal_code + '' + address + '' + name
+    "〒" + postal_code + ' ' + address + ' ' + name
   end
 end
