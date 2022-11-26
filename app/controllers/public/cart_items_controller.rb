@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
+  
   def create
 
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
