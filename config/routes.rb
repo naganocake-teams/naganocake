@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => "customers#withdraw", as: 'withdraw'
     get  '/orders/complete' => "orders#complete", as: "order_complete"
     post '/orders/confirm' => "orders#confirm", as: "order_confirm"
-    
+
     resources :orders, only:[:create, :new, :index, :show]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
@@ -46,10 +46,9 @@ Rails.application.routes.draw do
       resources :order_details, only:[:update]
     end
 
-    patch '/admin/orders/:order_id/order_details/:id' => "order_detail#update", as: "update_order_detail"
+    patch '/orders/:order_id/order_details/:id' => "order_detail#update", as: "update_order_detail"
     resources :customers
 
-    get '/admin' => "homes#top"
   end
 
   # For details on the DSgit L available within this file, see https://guides.rubyonrails.org/routing.html
