@@ -60,7 +60,7 @@
                 <td><%= order_detail.subtotal.to_s(:delimited) %></td>
 
                 <td class="text-center">
-                  <%= form_with model: order_detail, url: admin_order_order_detail_path(order_detail.id), method: :patch do |f| %>
+                  <%= form_with model: order_detail, url: admin_order_order_detail_path(@order.id,order_detail.id), method: :patch do |f| %>
                     <%= f.select :status, OrderDetail.statuses_i18n.invert, class: "form-select" %>
                     <%= f.submit "更新", class: "btn btn-success" %>
                   <% end %>

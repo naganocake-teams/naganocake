@@ -45,7 +45,7 @@
           </li>
         <% elsif admin_signed_in? %>
           <li class="nav-item mr-3">
-            <%= link_to items_path, class: 'btn btn-outline-dark nav-link ' do %>
+            <%= link_to admin_items_path, class: 'btn btn-outline-dark nav-link ' do %>
               商品一覧
             <% end %>
           </li>

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    get '/' => "homes#top", as:"top"
+    get '/' => "homes#top", as: "top"
     resources :items, only:[:index, :new, :create, :show, :edit, :update,]
     resources :genres, only: [:index, :create, :edit, :update]
 
@@ -46,7 +46,6 @@ Rails.application.routes.draw do
       resources :order_details, only:[:update]
     end
 
-    patch '/orders/:order_id/order_details/:id' => "order_detail#update", as: "update_order_detail"
     resources :customers
 
   end
