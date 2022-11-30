@@ -1,0 +1,32 @@
+<div class="container">
+  <h6 class=" my-4"><strong class="px-3" style="background-color: #dcdcdc">ログイン</strong></h6>
+  <p class="ml-4"><strong class="px-3" style="background-color: #dcdcdc">会員の方はこちらからログイン</strong></p>
+    <%= form_with model: @customer,url: customer_session_path do |f| %>
+
+      <div class="row mx-3 mb-3 px-5">
+        <div class="col-form-label col-3" >
+          <%= f.label "メールアドレス" %>
+        </div>
+        <div class="col-7 ">
+          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="col-form-label col-3" >
+          <%= f.label "パスワード" %>
+        </div>
+        <div class="col-7 ">
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+
+        <div class="col-6 offset-3 my-4">
+          <%= f.submit "ログイン", class: "btn btn-primary px-5" %>
+        </div>
+      </div>
+
+    <% end %>
+  <p class="ml-4"><strong class="px-3" style="background-color: #dcdcdc">会員登録がお済でない方</strong></p>
+  <div class="col-7 text-center mb-5">
+    <p ><a href="/customers/sign_up" class="mr-2">こちら</a>から新規登録を行って下さい。</p>
+  </div>
+</div>
+

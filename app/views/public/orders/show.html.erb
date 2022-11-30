@@ -1,0 +1,83 @@
+<div class="container">
+  <h6 class="col-3 my-4 offset-1"><strong class="px-3" style="background-color: #dcdcdc">注文履歴一覧</strong></h6>
+  <div class="row mb-3">
+    <div class="col-8">
+      <span>注文情報</span>
+
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-secondary"> 注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+
+        <tr>
+          <th class="table-secondary"> 配送先</th>
+          <td>
+            〒<%= @order.postal_code %><br>
+            <%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+
+        <tr>
+          <th class="table-secondary"> 支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+
+        <tr>
+          <th class="table-secondary">ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="col-3">
+      <span>請求情報</span>
+      <table class="table table-bordered">
+
+          <tr>
+            <th class="table-secondary"> 商品合計</th>
+            <td><%= @order.total_payment.to_s(:delimited) %></td>
+          </tr>
+
+          <tr>
+            <th class="table-secondary"> 配送料</th>
+            <td><%= @order.shipping_cost %></td>
+
+          </tr>
+
+          <tr>
+            <th class="table-secondary"> ご請求金額</th>
+            <td><%= (@order.total_payment + @order.shipping_cost).to_s(:delimited) %></td>
+          </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-10">
+      <span>注文内容</span>
+      <table class="table table-bordered">
+
+          <tr scope="row">
+            <th class="table-secondary"> 商品</th>
+            <th class="table-secondary"> 単価(税込)</th>
+            <th class="table-secondary"> 個数</th>
+            <th class="table-secondary"> 小計</th>
+          </tr>
+
+          <% @order_details.each do |order_detail| %>
+            <tr scope="row">
+              <td class="col-6"><%= order_detail.item.name %></td>
+              <td><%= order_detail.price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.price * order_detail.amount %></td>
+            </tr>
+          <% end %>
+
+      </table>
+    </div>
+  </div>
+</div>

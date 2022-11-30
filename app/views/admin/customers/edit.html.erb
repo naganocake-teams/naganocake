@@ -1,0 +1,58 @@
+<div class="container">
+  <h5 class="col-4 offset-1 my-4"><span class="px-3" style="background-color: #dcdcdc"><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</span></h5>
+  <div class="container offset-1 ">
+
+      <%= form_with model: @customer,url: admin_customer_path(@customer.id), method: :patch do |f| %>
+
+      <div class="row mb-2">
+        <%= f.label  "会員ID", class: "form-label col-2 mr-2" %>
+        <p class="col-3 mr-2"><%= @customer.id %></p>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label  "氏名", class: "form-label col-2 mr-2" %>
+        <%= f.text_field :first_name, autofocus: true, class: "form-control col-2 mr-5" %>
+        <%= f.text_field :last_name, class: "form-control col-2" %>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label  "フリガナ", class: "form-label col-2 mr-2" %>
+        <%= f.text_field :first_name_kana, class: "form-control col-2 mr-5" %>
+        <%= f.text_field :last_name_kana, class: "form-control col-2" %>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label "郵便番号", class: "form-label col-2 mr-2" %>
+        <%= f.text_field :postal_code, class: "form-control col-2 mr-5" %>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label "住所", class: "form-label col-2 mr-2" %>
+        <%= f.text_field :address, class: "form-control col-2 mr-5" %>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label  "電話番号", class: "form-label col-2 mr-2" %>
+        <%= f.text_field :telephone_number, class: "form-control col-2 mr-5" %>
+      </div>
+
+      <div class="row mb-2">
+        <%= f.label  "メールアドレス", class: "form-label col-2 mr-2" %>
+        <%= f.email_field :email, class: "form-control col-2 mr-5" %>
+      </div>
+
+      <div class="row mb-4 align-items-center">
+        <%= f.label  "会員ステータス", class: "form-label col-2 mr-2" %>
+
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :payment_method, "有効", class: "form-label mb-0 text-secondary ml-1" %>
+
+        <%= f.radio_button :is_deleted, true, class:"ml-3" %>
+        <%= f.label :payment_method, "退会", class: "form-label mb-0 text-secondary ml-1"  %>
+      </div>
+
+      <div class="row ">
+        <%= f.submit "変更を保存", class: "btn btn-success col-2 offset-2" %>
+      </div>
+    <% end %>
+</div>

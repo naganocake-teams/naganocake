@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row mt-5 mb-5 d-flex justify-content-center">
+    <div class="col-3">
+      <%= image_tag @item.image, size: "250x200" %>
+    </div>
+    <div class="col-7 ml-3 ">
+        <h4 class="mb-3"><strong><%= @item.name %></strong></h4>
+        <p class="mb-5"><%= @item.introduction %></p>
+        <div class="d-flex ">
+          <h5 class="mt-5">¥<%= @item.with_tax_price.to_s(:delimited) %><span class="small">(税込)</span></h5>
+        </div>
+    </div>
+  </div>
+
+  <% if customer_signed_in? %>
+      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+      <div class="row d-flex justify-content-center">
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <div class="col-3 text-center">
+          <%= f.select :amount, *[1..5], { prompt: '個数選択'}, required: true, class: "btn form-select border w-75 align-items-center" %>
+        </div>
+        <div class="col-3 text-center">
+          <%= f.submit "カートに入れる", class: "btn btn-success w-75" %>
+        </div>
+      </div>
+      <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+

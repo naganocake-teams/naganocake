@@ -1,0 +1,11 @@
+<div class="container">
+  <h4 class="col-3 offset-1 my-4"><span class="px-3" style="background-color: #dcdcdc">ジャンル編集</span></h4>
+    <%= form_with model: @genre, url: admin_genre_path(@genre.id) do |f| %>
+      <div class="row ml-4 mb-5 align-items-center">
+        <%= f.label :name, "ジャンル名", class: "form-label col-2" %>
+        <%= f.text_field :name, class: "form-control col-3" %>
+        <%= f.submit "変更を保存", class: "btn btn-success offset-1 col-2" %>
+      </div>
+    <% end %>
+
+</div>
